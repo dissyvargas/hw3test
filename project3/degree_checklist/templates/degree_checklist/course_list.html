@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Degree Checklist</title>
+</head>
+    <body>
+        <h1>Required & Core Courses</h1>
+        <hr>
+        <ul>
+        {% for item in course_list %}
+        <li>
+            <span>Subject:</span><span>{{ item.course.subject_name }}</span>
+            </br>
+
+        </li>
+        {% endfor %}
+        </ul>
+      </body>
+  </html>
