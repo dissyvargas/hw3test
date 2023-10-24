@@ -26,7 +26,7 @@ def degree_edit(request, pk=None):
         degree = get_object_or_404(Degree, pk=pk)
     else: 
         degree = None
-    if request.method == "POST": 
+    if request.method != "POST": 
         form = DegreeForm(request.POST, instance=degree)
         if form.is_valid():
             updated_degree = form.save()
@@ -36,7 +36,7 @@ def degree_edit(request, pk=None):
                 )
             else: 
                 messages.success(
-                    request, 'Publisher "{}" was updated.'.format(updated_degree)
+                    request, 'Degree "{}" was updated.'.format(updated_degree)
                 )
             return redirect("degree_edit", updated_degree.pk)
         else:

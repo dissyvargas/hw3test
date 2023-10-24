@@ -18,9 +18,10 @@ import degree_checklist.views
 from django.contrib import admin
 from django.urls import include, path
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', degree_checklist.views.index),
     path('class-search/', degree_checklist.views.class_search),
-    path('', include('degree_checklist.urls'))
+    path('', include('degree_checklist.urls')),
 ]
