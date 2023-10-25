@@ -5,7 +5,7 @@ from .forms import DegreeForm, SearchForm
 from django.contrib import messages
 
 def index(request):
-    return render(request, "course_list.html")
+    return render(request, "base.html")
 
 def class_search(request):
     search_text = request.GET.get("search", "")
@@ -19,7 +19,7 @@ def course_list(request):
     context = {
         'course_list': course_list
     }
-    return render(request, 'degree_checklist/course_list.html', context)
+    return render(request, 'course_list.html', context)
 
 def degree_edit(request, pk=None): 
     if pk is not None:
