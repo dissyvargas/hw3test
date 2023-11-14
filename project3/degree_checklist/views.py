@@ -1,7 +1,7 @@
 
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Degree, requiredCourses, degreeSpecific
-from .forms import DegreeForm, SearchForm
+from .forms import DegreeForm, SearchForm, ExampleForm
 from django.contrib import messages
 
 def index(request):
@@ -45,3 +45,9 @@ def degree_edit(request, pk=None):
             request, "form-example.html", {"method": request.method, "form":form}
 
         )
+    
+def form_example(request):
+    form = ExampleForm()
+    return render(
+     request, "form-examples.html", {"method": request.method, "form":form}
+    )

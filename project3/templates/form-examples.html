@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+        <input type="submit" name="submit_input"
+        value="Submit Input">
+        </p>
+        <p>
+        <button type="submit" name="button_element"
+        value="Button Element">
+        Button With <strong>Styled</strong> Text
+        </button>
+        </p>
+    </form>
+</body>
+</html>
