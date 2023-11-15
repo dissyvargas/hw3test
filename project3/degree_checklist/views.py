@@ -51,3 +51,8 @@ def form_example(request):
     return render(
      request, "form-examples.html", {"method": request.method, "form":form}
     )
+
+def media_example(request):
+    return render(
+        request, "media-example.html"
+    )
