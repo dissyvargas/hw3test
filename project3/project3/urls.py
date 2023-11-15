@@ -15,12 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 import degree_checklist.views
-from django.contrib import admin
+from django.contrib import admin, auth
+#from checklist_admin.admin import admin_site
 from django.urls import include, path
-
-
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
