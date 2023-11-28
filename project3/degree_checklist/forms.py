@@ -10,13 +10,14 @@ class DegreeForm(forms.ModelForm):
     class Meta:
         model = Degree
         fields = "__all__"
-
+#variables 
 RADIO_CHOICES = (
     ("Value One", "Value One Display"), 
     ("Value Two", "Value Two Display"),
     ("Value Three", "Value Three Display")
 )
 
+#example form created to work with forms 
 class ExampleForm(forms.Form):
     text_input = forms.CharField()
     password_input = forms.CharField(widget=forms.PasswordInput)
@@ -31,3 +32,7 @@ class ExampleForm(forms.Form):
     email_input = forms.EmailField()
     #date_input = forms.DateField(widget=forms.DateInput(attrs="type": "date"}))
     hidden_input = forms.CharField(widget=forms.HiddenInput, initial="Hidden Value")
+
+#model form/file uploads 
+class UploadForm(forms.Form):
+    file_upload = forms.FileField()

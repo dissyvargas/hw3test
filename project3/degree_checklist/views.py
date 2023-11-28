@@ -1,15 +1,22 @@
 
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Degree, requiredCourses, degreeSpecific
-from .forms import DegreeForm, SearchForm, ExampleForm
+from .forms import DegreeForm, SearchForm, ExampleForm, UploadForm
 from django.contrib import messages
+from django.conf import settings
 
 def index(request):
     return render(request, "base.html")
 
 def class_search(request):
     search_text = request.GET.get("search", "")
-    return render(request, "search-results.html", {"search_text": search_text})
+    return render(request, "search_result.html", {"search_text": search_text})
+
+def welcome_view(request): 
+    message = f'<html><h1>Welcome to Degree Checklist!</h1>\
+    <p>{Degree.objects.count()} classes and counting</p></html>'
+    return HttpResponse(message)
 
 def course_list(request):
     courses = requiredCourses.objects.all()
@@ -53,6 +60,23 @@ def form_example(request):
     )
 
 def media_example(request):
-    return render(
-        request, "media-example.html"
-    )
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            save_path = settings.MEDIA_ROOT / request.FILES["file_upload"].name
+            with open(save_path, "wb") as output_file:
+                for chunk in form.cleaned_data["file_upload"].chunks():
+                    output_file.write(chunk)
+    else: 
+        form = UploadForm()
+    return render(request, "media-example.html", {"form": form})
+
+#view for simple_tag
+def greeting_view(request):
+    return render(request, 'simple_tag_template.html', {'username': 'jdoe'})
+
+#view for custom_filter
+def index(request):
+    names = "john,doe,mark,swain"
+    return render(request, "index.html", {'names':names})
+
