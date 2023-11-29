@@ -20,6 +20,7 @@ import degree_checklist.views
 from django.contrib import admin, auth
 from django.urls import include, path
 from django.conf.urls.static import static
+from project3.views import profile
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +31,7 @@ urlpatterns = [
     path("accounts/", include(("django.contrib.auth.urls", "auth"), namespace="accounts")),
     path("accounts/password_reset/done/", auth.views.PasswordResetDoneView.as_view(),name="password_reset_done",),
     path("accounts/reset/done/", auth.views.PasswordResetCompleteView.as_view(),name="password_reset_complete",),
+    path('accounts/profile/', profile, name='profile')
     
 ]
 if settings.DEBUG: 
