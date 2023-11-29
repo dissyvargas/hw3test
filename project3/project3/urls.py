@@ -26,7 +26,10 @@ urlpatterns = [
    # path('', degree_checklist.views.index),
     path('class-search/', degree_checklist.views.class_search),
     path('', include('degree_checklist.urls')),
-    path('media-example/', degree_checklist.views.media_example)
+    path('media-example/', degree_checklist.views.media_example),
+    path("accounts/", include(("django.contrib.auth.urls", "auth"), namespace="accounts")),
+    path("accounts/password_reset/done/", auth.views.PasswordResetDoneView.as_view(),name="password_reset_done",),
+    path("accounts/reset/done/", auth.views.PasswordResetCompleteView.as_view(),name="password_reset_complete",),
     
 ]
 if settings.DEBUG: 
