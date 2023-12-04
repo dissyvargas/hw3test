@@ -8,10 +8,14 @@
         <h1>Required & Core Courses</h1>
         <hr>
         <ul>
-        {% for item in course_list %}
+        {% for data in form %}
         <li>
-            <span>Subject:</span><span>{{ item.course.subject_name }}</span>
-            </br>
+            <span class="text-info">Subject Name: </span> <span>{{data.subject_name}}</span>
+            <br>
+            <span class="text-info">Required Hours: </span> <span> {{data.hours}}</span>
+            <br>
+            <span class="text-info">Classes Offered: </span> <span> {{data.classes_offered}}</span>
+            
 
         </li>
         {% endfor %}

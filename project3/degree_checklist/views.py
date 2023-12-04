@@ -32,13 +32,8 @@ def welcome_view(request):
     return HttpResponse(message)
 
 def course_list(request):
-    courses = requiredCourses.objects.all()
-    course_list = []
-    for course in courses:
-        course_list.append({'course': course})
-    context = {
-        'course_list': course_list
-    }
+    form = requiredCourses.objects.all()
+    context = {'form':form}
     return render(request, 'course_list.html', context)
 
 def degree_edit(request, pk=None): 

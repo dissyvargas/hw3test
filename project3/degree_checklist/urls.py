@@ -10,5 +10,5 @@ urlpatterns = [
     path("degrees/<int:pk>/", views.degree_edit, name="degree_edit"),
     path("degrees/new/", views.degree_edit, name="degree_create"),
     path('form-examples/', views.form_example, name="form_example"),
-    path('greet', views.greeting_view, name='greeting')
+    path('greet', views.greeting_view, name='greeting'), 
 ]   
