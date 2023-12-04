@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+{% block title %}
+    {% if form.is_valid and search_text %}
+        Search Results for "{{ search_text }}"
+    {% else %}
+        Class Search
+    {% endif %}
+{% endblock %}
+{% block content %}
+<h2>Search for Classes</h2>
+<form>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+{% if form.isvalid and search_text %}
+<h3>Search Results for <em>{{ search_text }}</em></h3>
+<ul class="list-group"></ul>
+    {% for class in classes %}
+        <li class="list-group-item">
+            <span class="text-info">Title:
+            </span> 
+        </li>
+    {% empty %}
+    <li class="list-group-item">No results found.</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}

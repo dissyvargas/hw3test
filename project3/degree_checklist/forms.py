@@ -1,15 +1,25 @@
 from django import forms
 from .models import Degree, requiredCourses, degreeSpecific
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
-
+#used to search for classes 
 class SearchForm(forms.Form): 
     search = forms.CharField(required=False, min_length=3)
-    search_in = forms.ChoiceField(required=False, choices=(("degree name", "Degree Name"), ("major code", "Major Code")))
+    search_in = forms.ChoiceField(required=False, choices=(("degree name", "Degree Name"), ("subject_name", "Subject Name")))
+    # working with django-crispy forms 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = "get"
+        # passes empty argument,, then search title for button 
+        self.helper.add_input(Submit("", "Search"))
 
 class DegreeForm(forms.ModelForm):
     class Meta:
         model = Degree
         fields = "__all__"
+
 #variables 
 RADIO_CHOICES = (
     ("Value One", "Value One Display"), 
@@ -33,6 +43,6 @@ class ExampleForm(forms.Form):
     #date_input = forms.DateField(widget=forms.DateInput(attrs="type": "date"}))
     hidden_input = forms.CharField(widget=forms.HiddenInput, initial="Hidden Value")
 
-#model form/file uploads 
+# used to upload forms model form upload 
 class UploadForm(forms.Form):
     file_upload = forms.FileField()

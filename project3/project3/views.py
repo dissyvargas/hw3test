@@ -3,3 +3,6 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+
+def logout(request):
+    return render(request, 'logged_out.html')

@@ -6,9 +6,11 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project3.settings')
+    #updated for use with django-configurations
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE','project3.settings')
+    os.environ.setdefault('DJANGO_CONFIGURATION', 'Dev')
     try:
-        from django.core.management import execute_from_command_line
+        from configurations.management import execute_from_command_line
     except ImportError as exc:
         raise ImportError(
             "Couldn't import Django. Are you sure it's installed and "

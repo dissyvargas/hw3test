@@ -5,6 +5,7 @@ from django.template.response import TemplateResponse
 # Register your models here.
 class ChecklistAdmin(admin.AdminSite):
     site_header = "Checklist Administration"
+    #custom view for admin 
     def profile_view(self, request): 
         request.current_app = self.name
         context = self.each_context(request)

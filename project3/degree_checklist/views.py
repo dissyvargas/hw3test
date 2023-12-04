@@ -11,7 +11,20 @@ def index(request):
 
 def class_search(request):
     search_text = request.GET.get("search", "")
-    return render(request, "search_result.html", {"search_text": search_text})
+    #return render(request, "search_result.html", {"search_text": search_text})
+    form = SearchForm(request.GET)
+    subjects = set()
+    if form.is_valid() and form.cleaned_data["search"]:
+        search = form.cleaned_data["search"]
+        search_in = form.cleaned_data.get("search_in") or "degree_name"
+        if search_in == "degree_name":
+            subjects = Degree.objects.filter(degree_name__icontains=search)
+        else: 
+            sname_requiredCourses= requiredCourses.objects.filter(subject_name__icontains=search)
+            for requiredCourses in sname_requiredCourses:
+                for subject in requiredCourses.subject_set.all():
+                    subjects.add(subject)
+    return render(request, 'search-results.html',{"form": form, "search_text": search_text,"classes": subjects})
 
 def welcome_view(request): 
     message = f'<html><h1>Welcome to Degree Checklist!</h1>\
@@ -75,8 +88,5 @@ def media_example(request):
 def greeting_view(request):
     return render(request, 'simple_tag_template.html', {'username': 'jdoe'})
 
-#view for custom_filter
-def index(request):
-    names = "john,doe,mark,swain"
-    return render(request, "index.html", {'names':names})
+
 

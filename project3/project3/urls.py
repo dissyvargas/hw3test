@@ -20,18 +20,18 @@ import degree_checklist.views
 from django.contrib import admin, auth
 from django.urls import include, path
 from django.conf.urls.static import static
-from project3.views import profile
+from project3.views import profile, logout
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-   # path('', degree_checklist.views.index),
-    path('class-search/', degree_checklist.views.class_search),
+    path('', degree_checklist.views.index),
+    path('home/', degree_checklist.views.index),
+    path("class-search/", degree_checklist.views.class_search, name="class_search"),
     path('', include('degree_checklist.urls')),
     path('media-example/', degree_checklist.views.media_example),
     path("accounts/", include(("django.contrib.auth.urls", "auth"), namespace="accounts")),
-    path("accounts/password_reset/done/", auth.views.PasswordResetDoneView.as_view(),name="password_reset_done",),
-    path("accounts/reset/done/", auth.views.PasswordResetCompleteView.as_view(),name="password_reset_complete",),
-    path('accounts/profile/', profile, name='profile')
+    path('accounts/profile/', profile, name='profile'),
+    path('accounts/logout/', logout, name='logout'),
     
 ]
 if settings.DEBUG: 
