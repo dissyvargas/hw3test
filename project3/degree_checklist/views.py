@@ -57,10 +57,7 @@ def degree_edit(request, pk=None):
             return redirect("degree_edit", updated_degree.pk)
         else:
             form = DegreeForm(instance=degree)
-        return render(
-            request, "form-example.html", {"method": request.method, "form":form}
-
-        )
+        return render(request, "form-example.html", {"method": request.method, "form":form})
     
 def form_example(request):
     form = ExampleForm()

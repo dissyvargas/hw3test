@@ -35,11 +35,21 @@
                     <a class="nav-link" href="/admin">Admin Login</a>
                 </li>
             </li>
+            <li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/courses">Required Courses</a>
+                </li>
+            </li>
+            <li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/media-example">File Upload</a>
+                </li>
+            </li>
         </ul>
     </div>
 </nav>
 {% block content %}
-<h2>Profile</h2>
+<h2>Profile Information</h2>
 <div>
     <p>
         Username: {{ request.user.username }} <br>
@@ -49,6 +59,7 @@
         Last Login: {{ request.user.last_login }}<br>
     </p>
 </div>
+
 <div>
     <form>
         <form action="{% url 'class_search' %}" class="form-inline my-2 my-lg-0"></form>
