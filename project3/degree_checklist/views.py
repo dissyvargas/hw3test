@@ -6,6 +6,7 @@ from .forms import DegreeForm, SearchForm, ExampleForm, UploadForm
 from django.contrib import messages
 from django.conf import settings
 
+
 def index(request):
     return render(request, "base.html")
 

@@ -19,7 +19,6 @@ class Dev(Configuration):
     # Build paths inside the project like this: BASE_DIR / 'subdir'.
     BASE_DIR = Path(__file__).resolve().parent.parent
 
-    CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
     # Quick-start development settings - unsuitable for production
@@ -44,7 +43,7 @@ class Dev(Configuration):
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'degree_checklist', 
-        'crispy_forms'
+
     ]
 
     MIDDLEWARE = [
